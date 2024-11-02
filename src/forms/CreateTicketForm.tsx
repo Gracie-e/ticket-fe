@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import validateNewTicket from "@/validators/ValidateNewTicket.tsx";
+import validateNewTicket from "@/schema/CreateTicketSchema.tsx";
 import { TicketStatus } from "@/types/models/tickets.ts";
 import { ticketAPI } from "@/api-client/TicketClient.ts";
 import { z } from "zod";
@@ -18,6 +18,7 @@ export const CreateTicketForm = () => {
             senderUserId: 0,
             receiverUserIds: [] as number[],
             title: "",
+            description: "",
             status: TicketStatus.OPEN
         },
         mode: "onBlur"

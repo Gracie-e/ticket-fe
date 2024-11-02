@@ -19,7 +19,6 @@ const fetcher: Fetcher = async <T>(...[input, init]: FetchArgs): Promise<T> => {
         }
 
         const apiResponse: ApiResponse<T> = await response.json();
-
         if (apiResponse.error) {
             throw apiResponse.error;
         }

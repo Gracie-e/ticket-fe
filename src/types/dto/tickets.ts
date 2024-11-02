@@ -4,6 +4,7 @@ interface CreateTicketDTO {
     senderUserId: number;
     receiverUserIds: number[];
     title: string;
+    description?: string;
     status?: TicketStatus; // default to open
 }
 

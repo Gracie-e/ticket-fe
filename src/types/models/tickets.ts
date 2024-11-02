@@ -1,6 +1,7 @@
 interface Ticket {
     id: number;
     title: string;
+    description: string;
     createdAt: Date;
     status: TicketStatus
     ReceiverUserIds: number[];

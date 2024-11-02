@@ -18,7 +18,8 @@ class TicketAPI {
     }
 
     async getAll(): Promise<Ticket[]> {
-        return fetcher<Ticket[]>(this.baseUrl);
+       return fetcher<Ticket[]>(this.baseUrl);
+
     }
 
     async getSent(userId: number): Promise<Ticket[]> {
