@@ -1,6 +1,6 @@
-import {TicketStatus} from "@/types.ts";
+import {TicketStatus} from "@/types/models/tickets.ts";
 
-export function getTicketStatusString(status: number): string {
+ function getTicketStatusString(status: number): string {
     if (status === TicketStatus.OPEN) {
         return "Open";
     } else if (status === TicketStatus.IN_PROGRESS) {
@@ -12,4 +12,10 @@ export function getTicketStatusString(status: number): string {
     } else {
         return "Unknown";
     }
+}
+
+
+
+export {
+     getTicketStatusString
 }

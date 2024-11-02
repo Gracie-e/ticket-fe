@@ -1,6 +1,7 @@
 import React from 'react';
 import { ThemeProvider } from "@/components/theme-provider";
-import { ModeToggle } from "@/components/mode-toggle";
+import { SideNav } from "@/components/common/SideNav";
+import { SidebarProvider } from "@/components/ui/sidebar";
 
 interface RootLayoutProps {
     children: React.ReactNode;
@@ -9,14 +10,14 @@ interface RootLayoutProps {
 export function RootLayout({ children }: RootLayoutProps) {
     return (
         <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-            <div className="min-h-screen bg-background text-foreground mx-auto max-w-7xl">
-                <header className="p-4">
-                    <ModeToggle />
-                </header>
-                <main>
-                    {children}
-                </main>
-            </div>
+            <SidebarProvider>
+                <div className="flex min-h-screen bg-background">
+                    <SideNav />
+                    <main className="flex-1 p-6">
+                        {children}
+                    </main>
+                </div>
+            </SidebarProvider>
         </ThemeProvider>
     );
 }

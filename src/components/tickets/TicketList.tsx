@@ -1,14 +1,9 @@
-import useSWR from "swr";
-import {Ticket} from "@/types.ts";
-import fetcher from "@/lib/fetcher.ts";
 import TicketCard from "@/components/tickets/TicketCard.tsx";
+import {Ticket} from "@/types/models/tickets.ts";
+import useTickets from "@/hooks/tickets/useTickets.ts";
 
-export const Tickets = () => {
-    const { data: tickets, error, isLoading } = useSWR<Ticket[] | null>(
-        `http://localhost:5015/api/Ticket/received/${1}`,
-        fetcher
-    );
-
+export const TicketList = () => {
+    const { data: tickets, error, isLoading } = useTickets();
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>Error: {error.message}</div>;
 

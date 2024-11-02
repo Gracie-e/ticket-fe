@@ -1,8 +1,8 @@
 import { CardContent, Card, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card.tsx";
 import * as React from "react";
 import {Badge} from "@/components/ui/badge.tsx";
-import { Ticket } from "@/types";
-import {getTicketStatusString} from "@/lib/getTicketStatusString.ts";
+import {Ticket} from "@/types/models/tickets.ts";
+import {getTicketStatusString} from "@/utils/tickets.ts";
 
 
 interface TicketCardProps {

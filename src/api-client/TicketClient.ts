@@ -1,5 +1,5 @@
 /* Client API requests for tickets.ts */
-import fetcher from "@/lib/fetcher.ts";
+import fetcher from "@/lib/api/fetcher.ts";
 import {Ticket} from "@/types/models/tickets.ts";
 import {CreateTicketDTO} from "@/types/dto/tickets.ts";
 const API_BASE_URL = import.meta.env.VITE_BASE_API_URL ?? 'http://localhost:3000/api/';

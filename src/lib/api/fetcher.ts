@@ -1,4 +1,4 @@
-import type { ApiError, ApiResponse } from '@/types/api/common';
+import type { ApiError, ApiResponse } from '@/types/api/common.ts';
 
 type FetchArgs = [input: RequestInfo | URL, init?: RequestInit];
 type Fetcher = <T>(input: RequestInfo | URL, init?: RequestInit) => Promise<T>;

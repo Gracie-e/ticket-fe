@@ -1,6 +1,6 @@
 import useSWR from "swr";
 import {Ticket} from "@/types/models/tickets.ts";
-import {ticketAPI} from "@/api-client/ticket-client.ts";
+import {ticketAPI} from "@/api-client/TicketClient.ts";
 
 export default function useTickets(){
     return useSWR<Ticket[]>(
