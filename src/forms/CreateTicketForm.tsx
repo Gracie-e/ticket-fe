@@ -8,10 +8,19 @@ import { toast } from "@/hooks/use-toast.ts";
 import { Button } from "@/components/ui/button.tsx";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from "@/components/ui/input.tsx";
+import React from "react";
+import useTickets from "@/hooks/tickets/useTickets.ts";
+import {Textarea} from "@/components/ui/textarea.tsx";
 
 type FormValues = z.infer<typeof validateNewTicket>;
 
-export const CreateTicketForm = () => {
+interface CreateTicketFormProps {
+    onSuccess: () => void;
+}
+
+export const CreateTicketForm: React.FC<CreateTicketFormProps> = ({ onSuccess }) => {
+    const { mutate } = useTickets();
+
     const form = useForm<FormValues>({
         resolver: zodResolver(validateNewTicket),
         defaultValues: {
@@ -32,6 +41,8 @@ export const CreateTicketForm = () => {
                 description: "Ticket created successfully",
             });
             form.reset();
+            onSuccess();
+            await mutate();
         } catch (error) {
             console.error("Error submitting form:", error);
             toast({
@@ -129,6 +140,25 @@ export const CreateTicketForm = () => {
                         </FormItem>
                     )}
                 />
+
+                <FormField
+                    control={form.control}
+                    name="description"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Description</FormLabel>
+                            <FormControl>
+                                <Textarea
+                                    {...field}
+                                    placeholder="Enter ticket description"
+                                    onBlur={() => form.trigger("description").catch(console.error)}
+                                />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+
 
                 <div className="flex justify-end space-x-2 pt-4">
                     <Button

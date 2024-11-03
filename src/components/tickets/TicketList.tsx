@@ -25,10 +25,12 @@ export const TicketList: React.FC<TicketListProps> = ({searchValue}) => {
 
 
     return (
-        <div >
+        <div className="space-y-4 max-h-screen overflow-auto pr-2 custom-scroll">
             {filteredTickets.length > 0 ? (
                 filteredTickets.map((ticket: Ticket) => (
-                    <TicketCard key={ticket.id} ticket={ticket} />
+                    <div key={ticket.id}>
+                        <TicketCard ticket={ticket} />
+                    </div>
                 ))
             ) : (
                 <p>No tickets found.</p>

@@ -1,29 +1,29 @@
 import {
     Dialog,
-    DialogContent,
-    DialogDescription,
+    DialogContent, DialogDescription,
     DialogHeader,
     DialogTitle,
     DialogTrigger
-} from "@/components/ui/dialog.tsx";
-import {Button} from "@/components/ui/button.tsx";
-import CreateTicketForm from "@/forms/CreateTicketForm.tsx";
-
+} from "@/components/ui/dialog";
+import {Button} from "@/components/ui/button";
+import CreateTicketForm from "@/forms/CreateTicketForm";
+import {useState} from "react";
 
 const CreateTicket = () => {
-    return(
-        <Dialog>
+    const [isOpen, setIsOpen] = useState(false);
+
+
+    return (
+        <Dialog open={isOpen} onOpenChange={setIsOpen} >
             <DialogTrigger asChild>
                 <Button>New Ticket</Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
+                    <DialogDescription />
                     <DialogTitle>New Ticket</DialogTitle>
-                    <DialogDescription>
-                        <CreateTicketForm />
-                    </DialogDescription>
                 </DialogHeader>
-
+                <CreateTicketForm onSuccess={() => setIsOpen(false)} />
             </DialogContent>
         </Dialog>
     );

@@ -4,28 +4,28 @@ import {Badge} from "@/components/ui/badge.tsx";
 import {Ticket} from "@/types/models/tickets.ts";
 import {getTicketStatusString} from "@/utils/tickets.ts";
 
-
 interface TicketCardProps {
     ticket: Ticket
 }
 
 const TicketCard: React.FC<TicketCardProps> = ({ticket}) => {
     return (
-        <Card className={'w-96 h-96'} >
+        <Card className="relative overflow-hidden">
             <CardHeader>
                 <CardTitle>{ticket.title}</CardTitle>
+                <CardDescription>{ticket.description}</CardDescription>
             </CardHeader>
             <CardContent>
-                <CardDescription>
-                    {new Date(ticket.createdAt).toLocaleDateString()}
-                </CardDescription>
+                <div className="text-sm text-muted-foreground">
+                    {new Date(ticket.createdAt).toLocaleTimeString('en-gb')}
+                </div>
             </CardContent>
             <CardFooter>
                 <Badge>{getTicketStatusString(ticket.status)}</Badge>
             </CardFooter>
+            <div className="absolute -right-5 -bottom-5 w-10 h-10 transform rotate-45 bg-blue-500/30"/>
         </Card>
     )
 };
 
 export default TicketCard;
-
